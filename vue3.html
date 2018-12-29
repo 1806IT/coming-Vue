@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="UTF-8">
+    <title>vue3.0 计算属性</title>
+    <link rel="stylesheet" href="./style3.css">
+</head>
+<body>
+<div id="demo">
+    {{text}}<br>
+    {{text.split(',').reverse().join(',')}}<br>
+    下面是使用计算属性得到的
+    {{reverseText}}<br>
+    两个购物车总价：{{prices}}<br>
+    my name is {{fullName}}<br>
+    等价于 <br>
+    my name is {{full}}
+    计算属性的缓存 <hr>
+    {{now}} <br>
+    通过methods拿到,就要加括号 <br>
+    {{thistime()}}
+</div>
+<script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+<script type="text/javascript">
+
+</script>
+<script src="vue3.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="UTF-8">
+    <title>创建以一个vue实例，并使用计算属性和方法实现一个字符串翻转的操作，写出核心代码</title>
+</head>
+<body>
+<div id="demo3-1">
+    {{text}} <br>
+    {{reverseText}} <br>
+    {{fullName1}}  计算属性方法<br>
+    <br>methods方法 <br>
+    {{full()}} <br>
+    {{firstName}} <br>
+    {{lastName}}<br>
+    {{fullName}}<br>
+
+</div>
+<script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+<script>
+    var demo=new Vue({
+        el:'#demo3-1',
+        data:{
+            text:'123456',
+            firstName:'Feng',
+            lastName:'QingYang',
+            fullName:'Feng QingYang'
+        },
+        computed:{
+
+            reverseText:function(){
+/*                let j=0
+                let b=[]
+                for(let i=this.text.length;i>=0;i--){
+                    b[j]=this.text[i]
+                    j++
+                }
+                return b.join('')*/
+                return this.text.split('').reverse().join('')
+            },
+            fullName1:function(){
+                return '姓'+this.firstName+'名'+this.lastName
+            }
+        },
+        methods:{
+            full:function(){
+                return this.firstName+'  '+this.lastName
+            }
+        },
+        watch:{
+            firstName:function(val){return this.fullName=val +''+this.lastName},
+            lastName:function(val){return this.fullName=this.firstName+''+val}
+        }
+    })
+</script>
+</body>
+</html>
