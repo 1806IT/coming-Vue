@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="UTF-8">
+    <title>指令、过滤器、事件、语法糖</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="dataApp">
+    {{date | formDate}} <br>
+    {{date}}<br>
+
+    {{bananer}}<br>
+   <!--{{}}和v-text等价-->
+    {{apple}}<br>
+    <span v-text="apple"></span><br>
+
+    <span v-html="cat"></span>
+    <hr>
+    <!--:和v-bind等价，用于绑定属性-->
+    <div v-bind:class="className"></div>
+    <div :class="yellow"></div>
+    <hr>
+   <!-- @和v-on等价，用于监听事件-->
+    <button v-on:click="count">{{countnum}}</button>
+</div>
+
+<script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+<script>
+
+    //需求:在页面中实时显示当前时间
+    var plusDate=function(value){
+        return value<10 ? '0'+value:value
+    }
+    var app =new Vue({
+        el:'#dataApp',
+        data:{
+            date:new Date(),
+            apple:'苹果',
+            cat:'<span style="color:red">猫</span>',
+            bananer:'香蕉',
+            className:'transGreen',
+            yellow:'yellow',
+            countnum:0
+        },
+        //定义过滤器
+        filters:{
+            formDate:function(value){
+
+                var date=new Date(value)
+                var year=date.getFullYear()
+                var month=plusDate(date.getMonth()+1)
+                var day=plusDate(date.getDate())
+                var hours=plusDate(date.getHours())
+                var min=plusDate(date.getMinutes())
+                var sec=plusDate(date.getSeconds())
+                return year+'--'+month+'--'+day+'    '+hours+':'+min+':'+sec
+            }
+        },
+        methods:{
+          count:function(){
+              this.countnum++
+          }
+        },
+        mounted:function(){
+            var self=this//this代表vue实例
+            var n=0
+            this.timer=setInterval(()=>{
+                this.date=new Date()
+                console.log(n++)
+            },1000)
+        },
+        beforeDestory:function(){
+            if(this.timer){
+                clearInterval(this.timer)
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
