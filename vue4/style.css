@@ -1,0 +1,36 @@
+.red{
+    background: red;
+    width: 300px;
+    height: 30px;
+
+}
+.green{
+    background: green;
+    width: 300px;
+    height: 30px;
+}
+.darkmagenta{
+    background: darkmagenta;
+    min-width: 300px;
+    max-width: 600px;
+    height: 30px;
+}
+.yellow{
+    background: yellow;
+}
+.grey{
+    background: grey;
+}
+.thin{
+    font-size: 13px;
+}
+.center{
+    text-align: center;
+}
+
+.active{
+    color: blue;
+}
+.borderstyle{
+    border: 10px solid black;
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind以及class与style的绑定</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div id="app">
+    绑定class对象语法：对象的健是类名，值是布尔值 <br>
+    <input type="button" :class="{yellow:isyellow,grey:isgrey}" v-on:click="changeColor">
+    <hr>
+    <div :class="{red:isred,thin:true,center:1,active:0,borderstyle:isborder}">使用对象语法绑定class</div>
+    计算属性绑定： <br>
+    <div :class="classname">计算属性绑定class,将多个类名放到计算属性中返回，逻辑复杂时使用</div>
+    绑定class数组语法绑定： <hr>
+    <div :class="[a,b,c,d]">使用数组语法绑定class</div>
+    <hr>
+    绑定class使用数组和对象的混用方式,第一个成员是对象,后面的成员时数组成员,可以打乱顺序
+    <div :class="[b,{red:isred,thin:isthin},d]">混用方式</div>
+    <hr>
+    绑定内联样式,与绑定css一样,感觉想再写css，健代表style的属性值，值代表属性对应的值了
+    <div :style="{'color':color,'fontSize':size+'px','background':'green'}">使用对象语法绑定style</div>
+    <hr>
+    <div :style="[astyle,bstyle]">使用数组语法绑定style,太麻烦，还要拼字节这种方式在开发中用的少</div>
+</div>
+<script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+<script src="vue4.js"></script>
+</body>
+</html>
