@@ -1,0 +1,10 @@
+/*v-cloak与display结合使用范例*/
+[v-cloak]{
+    display:none;
+}
+*{list-style: none;}
+.red{
+    width:100px;
+    height: 100px;
+    background: pink;
+}

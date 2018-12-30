@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh=hans">
+<head>
+    <meta charset="UTF-8">
+    <title>vue的内置指令</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div id="app">
+    v-cloak <br>
+    {{msg}}
+    <p v-cloak>{{msg}}</p>
+    <hr>
+    v-once: 只渲染一次,后续不能再次渲染了<br>
+    {{oncedata}} <br>
+    <p v-once>{{oncedata}}</p>
+    <hr>
+    <h1>条件渲染</h1> <br>
+    v-if后面接的是等号，等号的内容必须是布尔值 <br>
+    v-if的基本用法
+    <p v-if="6<a">{{apple}}</p>
+    <p v-else-if="9<5">{{origen}}</p>
+    <p v-else>{{banana}}</p>
+    <hr>
+    <h2>v-if的实例用法</h2> <br>
+    点击按钮，实现输入用户名输入框和密码框的转换
+    <br>
+    <div v-if="type==='name'">
+        user: <input type="text" placeholder="请输入用户名" key="name">
+    </div>
+    <div v-else>
+        password: <input type="text" placeholder="请输入密码" key="name1">
+    </div>
+    <button v-on:click="toggleType">提交切换</button>
+    <h2>v-show感觉和v-if一样，显现与否取决于布尔值 </h2><br>
+    <p v-show="9>a">v-show</p>
+
+    <h1>v-for的用法</h1><h2>重要</h2>
+    <h3>v-for一定要写在要遍历的元素上，v-for后接等号,类似与item in items</h3>
+    （1）遍历多个对象：<br>
+    <strong>学好vue的方法是</strong>
+    <ul>
+        <li v-for="words in vueMethods">{{words.name}}</li>
+    </ul>
+    <strong>带索引的写法:括号的第一个变量代表item值,第二个代表index,索引</strong>
+    <ul>
+        <li v-for="(words,index) in vueMethods">{{index}}+'--------'+{{words.name}}</li>
+    </ul>
+    <h2>2:遍历一个对象的多个属性</h2>
+
+    <span v-for="girl in nvshen">{{girl}}</span>
+    <br>
+    <strong>拿value,key,index,顺序见例子</strong> <br>
+    <div v-for="(girl,key,index ) in nvshen">第{{index+1}}个神：--健是:{{key}}人是：{{girl}}</div>
+    <h1>数组第更新，过滤与排序</h1>
+    <div v-for ='study in arr '>{{study}}</div>
+    <button @click="sortArr">点击排序</button>
+    <button @click="reserveArr">点击数组反转</button>
+    <button @click="changeOne">点击改变数组指定项</button>//第一个例子失败
+    <button @click="changeLength">点击改变数组长度</button>//第一个例子失败
+    <hr>
+    返回字符串中含有oo的项： <br>
+    {{matchoo}}
+    <hr>
+    <!--<div v-on:click="handle"></div>-->
+    点击次数:   {{count}},
+    <button @click="handle1()" >点击增加次数1</button>
+    <button @click="handle1(8)">点击增加次数8</button>
+    <h1>修饰符</h1>
+    <hr>
+    <div @click="divclick" :class="{red:isred}">
+        <button @click="btnclick">有冒泡</button>
+        <span>stop用法</span>
+        <button @click.stop="btnclick">没有冒泡</button>
+    </div>
+    <hr>
+    prevent的用法 <br>
+    每次提交表单都会重载页面
+    <form action="" >
+        <button type="submit">提交表单这个会重载页面</button>
+
+    </form>
+    <br>
+    每次提交表单都不会重载页面,用prevent方法
+    <form action="" @submit.prevent="hangle2">
+
+        <button type="submit" >提交表单这个不会重载页面</button>
+    </form>
+    <hr>
+    每次提交表单都不会重载页面,用self方法
+    <div @click.self="divclick" :class="{red:isred}">
+        <button @click="btnclick">没有冒泡</button>
+    </div>
+    once: <br>
+    <button @click="onceMethod">没用once方法,能执行无限次</button>
+    <button @click.once="onceMethod">用once方法：只执行一次</button>
+    <hr>
+    监听键盘事件
+    <input type="text" @keyup.13="submitMe">
+</div>
+
+<script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+<script src="vue5.js"></script>
+</body>
+</html>
