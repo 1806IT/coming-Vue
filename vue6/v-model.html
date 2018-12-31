@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="UTF-8">
+    <title>v-model</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div id="app">
+    v-model在input和textarea中的用法： <br>
+    <input type="text" v-model="value">
+    {{value}}
+    <br>
+    所显示的值只与所绑定的值相关与初始化值无关
+    <textarea name="" id="" cols="30" rows="10" v-model="msg">初始化值</textarea>
+    {{msg}}
+    <hr>
+    单选框 <br>
+    1）单个单选框  v-bind可以，v-model不行<br>
+    <input type="radio" v-bind:checked="oneradio"> <br>
+    <br>单选按钮的绑定值，用v-model
+    <input type="radio" v-model="oneradio" v-bind:value="value"> ---{{oneradio}}
+    <br>下面用v-model不生效
+    <input type="radio" v-model="oneradio"> <br>
+    2)多个单选框,name相同，只能选择一个，这样就做到了排他效果
+    <br>
+    1: <input type="radio" name="checks" value='a' v-model="checkName"> <br>
+    2: <input type="radio" name="checks" value='b' v-model="checkName"> <br>
+    3: <input type="radio" name="checks" value='c' v-model="checkName"> <br>
+    现在选中的是----{{checkName}}
+    <hr>
+    复选框 与单选框类似<br>
+    1）单个复选框 v-bind和v-model一样<br>
+    v-bind <br>
+    <input type="checkbox" v-bind:checked="oneradio" >
+
+    <br>v-model
+    <input type="checkbox" v-model="oneradio" > <br>
+    多个复选框,被绑的数据要用数组的数据结构
+    <br>
+    1:<input type="checkbox" name="aa" value='a' v-model="checkes" >
+    2:<input type="checkbox" name="aa" value='b' v-model="checkes" >
+    3:<input type="checkbox" name="aa" value='c' v-model="checkes" >
+    <br> 本次选择为  {{checkes}}
+    <br>单选的下拉框:  v-model只能放在select里面
+    <select v-model="checkSelect">
+        <option value="a">a</option>
+        <option value="b">b</option>
+        <option value="c">c</option>
+    </select>
+    做出的选择是：{{checkSelect}}
+
+    <br>多选的下拉框:  v-model只能放在select里面
+    <br>
+    <select v-model="selected" multiple>
+        <option value="a">a</option>
+        <option value="b">b</option>
+        <option value="c">c</option>
+    </select>
+    做出的选择是：{{selected}}
+    <br>
+    绑定值 <br>
+    复选框按钮：--选中和不选中的value不一样
+    <input type="checkbox" v-model="toto" :true-value="value1" :false-value="value2">
+    <br>
+    {{toto}}<br>
+    {{toto==value1}}<br>
+    {{toto==value2}}
+    <br>
+    下拉框
+    <br>
+    <select v-model="valueselected" :value="{num:111}">
+        <option value="a">a</option>
+        <option value="b">b</option>
+        <option value="c">c</option>
+    </select>
+    选中的事---{{valueselected}}
+    <br>
+    修饰符
+    <br>
+
+
+</div>
+<script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

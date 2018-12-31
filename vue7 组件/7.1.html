@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="UTF-8">
+    <title>组件</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app1">
+    <topo-assembly></topo-assembly>
+    <tagname1></tagname1>
+    html标签受限，如table中只能有tr，td,tbody,使用is属性
+    <table>
+        <!--<topo-assembly></topo-assembly>-->
+        <tbody is="topo-assembly"></tbody>
+        <tbody is="tagname1"></tbody>
+    </table>
+    <h5>这是父组件</h5>
+    <child-component msg="这是来自父组件的内容"></child-component>
+    <hr>
+    使用v-bind进行数据的动态绑定--把input中的msg传递给子组件
+    <input type="text" v-model="parent">
+    <bind-props :msg="parent"></bind-props>
+</div>
+<div id="app2">
+    <tagname1></tagname1>
+    <!--<&#45;&#45;<topo-assembly></topo-assembly>会报错&ndash;&gt;-->
+
+</div>
+<br>
+父组件向子组件用props传递数据
+<br>
+<div id="props">
+
+</div>
+
+<script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+<script src="7.1.js"></script>
+</body>
+</html>
