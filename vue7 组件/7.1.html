@@ -25,14 +25,29 @@
 <div id="app2">
     <tagname1></tagname1>
     <!--<&#45;&#45;<topo-assembly></topo-assembly>会报错&ndash;&gt;-->
-
+    <hr>
+    这是app2
+    <btn-count></btn-count>
+    <btn-count></btn-count>
 </div>
 <br>
 父组件向子组件用props传递数据
 <br>
 <div id="props">
-
 </div>
+<div id="appModelProps">
+ 这是模版，以便区分,这里定义的都是父组件 <br>
+    <!--第2.2步 将父组件的数据传递进去，建立一个app3-msg的变量名，用于传递-->
+    <my-component1 app3msg="这是父组件传递的数据">子组件数据，渲染后看不到</my-component1>
+    <hr>需求通过input中输入的数据直接改变divd 宽度
+    <input type="text" v-model="width">
+    <width-component :width="width"></width-component>
+    <hr>
+    <input type="text" v-model="data7">{{data7}}
+    <type-component :a="a" :b="ab" :br="cc" :d="data7" :e="arr" :selfdefine="f" :gfunction="g"></type-component>
+    <!--数组e，如果不传:e="arr",则会在页面中显示默认的值，传了，显示data中的值，在html中只能用短横杠的方法命名,在html中进行绑定-->
+</div>
+
 
 <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
 <script src="7.1.js"></script>

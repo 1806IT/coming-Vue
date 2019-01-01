@@ -4,9 +4,20 @@
 #app2{
     border:1px solid green;
 }
+#app2>button{
+    border: 1px solid darkmagenta;
+}
 #props{
     border: 2px solid yellow;
 }
 h5{
 text-align: center;
+}
+#appModelProps{
+    height: 400px;
+    padding: 5px;
+    margin: 0 auto;
+    margin-top:30px;
+    background: lightslategrey;
+    text-align: center;
 }
