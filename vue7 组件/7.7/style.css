@@ -1,0 +1,11 @@
+#child-to-parent,#v-model{
+    border: 1px solid grey;
+    width: 600px;
+    height: 400px;
+    font-weight: 700;
+    font-size: 16px ;
+    padding: 5px;
+    margin: 0 auto;
+    margin-top: 100px;
+    background: lightgray;
+}

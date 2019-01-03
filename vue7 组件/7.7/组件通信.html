@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="UTF-8">
+    <title>message</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div id="child-to-parent">
+    <p>您银行余额为{{total}}元</p>
+    这是父组件
+    <hr>
+   <!-- <test-compent></test-compent>-->
+    <son-compent @change="handleTotal"></son-compent>//因为这里定义的方法的作用域在父组件中，所以要在父组件中定义该方法
+    <hr>
+    <test-topo-component></test-topo-component>
+</div>
+<hr>
+<div id="v-model">
+    <p>您银行余额为{{total}}元</p>
+    <topo-son-component v-model="total"></topo-son-component>
+</div>
+<hr>
+非父组件之间的通信（注视频教程为全局组件，自己做局部组件） <br>
+<div id="message">
+    <acomponent ref="a"></acomponent>
+    <bcomponent ref="b"></bcomponent>
+    <child-component ref="c"></child-component> {{msg}}
+    <button @click="getChild">父组件按钮，要拿子组件内容</button>  {{ddd}}
+</div>
+<script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+<script src="base.js"></script>
+</body>
+</html>
